@@ -1,0 +1,107 @@
+.container {
+    //EXPLICATION FOR MAX-WIDTH: If we have enough space, the container can decrease. If there is not enough space to display our 120rem (1200px), if the viewport is less than 1200px, we occupy 100% available viewport width. 
+    max-width: 120rem;
+    //That (margin: 8rem auto;) centers the container inside its parent which is body in this case.
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var (--shadow-dark);
+
+    min-height: 50rem;
+
+    @media only screen and (max-width: $bp-largest) {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    } 
+}
+
+.header {
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--line);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    //search barı aşağıya çekmek için mais je n'ai pas bien compris comment.
+    @media only screen and (max-width: $bp-smallest) {
+        flex-wrap: wrap;
+        height: 11rem;
+        //control the space between the rows --> align-content
+        align-content: space-around;
+    }
+}
+
+.content {
+    display:flex;
+
+    @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+    } 
+}
+
+.sidebar {
+    background-color: var(--color-grey-dark-1);
+    flex: 0 0 18%;
+    display:flex;
+    //We had to change flex direction from row to column, so we can use justify content property.
+    flex-direction: column;
+    //Şimdi justify-content:space-between; diyerek copyright ı aşağıya çekiyorum.
+    justify-content: space-between;
+}
+
+.hotel-view {
+    background-color: #fff;
+
+//flex:1 diyince hotel-view kısmı %100-%18 = %82 lik kısmı kapsar.
+    flex: 1;
+}
+
+.detail {
+    font-size: 1.4rem;
+    display: flex;
+    //Aşağıdaki description class ındaki margin-right: 4.5rem; ile aynı veriyoruz. 4 taraftaki boşlukla ortadaki boşluk aynı oluyor.
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line);
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+    }
+}
+
+.description {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    flex: 0 0 60%;
+    //2 blok arasında boşluk oluşturmak için
+    margin-right: 4.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}
+
+.user-reviews {
+    //description daki %60 dan geri kalan yeri işgal etmesi için flex:1 diyoruz.
+    flex: 1;
+
+    //text-align:center; dersem Lorem ipsum text lerini de ortalıyor. O yüzden display:flex;
+    display: flex;
+    flex-direction: column;
+    //Button un alt çizgisi satır boyunca uzadı. Çünkü align-items ın default u stretch. TRICK --> Onu align-items: center; yapınca düzeliyor.
+    align-items: center;
+}
